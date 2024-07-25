@@ -1,0 +1,30 @@
+import kotlin.Boolean;
+
+CREATE TABLE Words (
+    value TEXT NOT NULL,
+    used INTEGER AS Boolean DEFAULT 0
+);
+
+insertWord:
+INSERT INTO Words(value, used)
+VALUES(?, ?);
+
+removeAllWords:
+DELETE FROM Words;
+
+selectUnusedWord:
+SELECT Words.*
+FROM Words
+WHERE used = 0
+LIMIT 1;
+
+selectMatchingWord:
+SELECT Words.*
+FROM Words
+WHERE value = ?;
+
+setWordByValue:
+UPDATE Words SET used = 1 WHERE value = ?;
+
+getWordsCount:
+SELECT COUNT(*) FROM Words;
