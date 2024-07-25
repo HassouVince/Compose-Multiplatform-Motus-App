@@ -1,2 +1,4 @@
 # Compose-Multiplatform-Motus-App
-Simple Compose Multiplatform app working on Android, Ios and desktop (SqlDelight, Koin, ViewModels..)
+Simple Compose Multiplatform app using Data Domain UI Layer, DI with Koin, Viewmodels, SQLDelight and other tools..  
+
+<strong>Working on Android, IOS and desktop</strong>
