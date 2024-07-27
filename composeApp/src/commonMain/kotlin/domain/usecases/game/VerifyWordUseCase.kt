@@ -20,7 +20,7 @@ class VerifyWordUseCase(
         if (value.length < game.getEntryLimit())
             EntryState.InvalidLengthEntry()
         else {
-            wordsRepository.getSameWordOrNull(game, value)
+            wordsRepository.getSameWordOrNull(value)
                 ?.let {
                     if (game.isEntryMatches(value))
                         EntryState.Success(value)

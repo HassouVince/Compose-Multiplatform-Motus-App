@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
 interface WordsRepository {
     suspend fun getWordToPlay(game: Game? = null): Flow<AppResult<Word>>
     suspend fun removeAll(): Flow<AppResult<Unit>>
-    fun getSameWordOrNull(game: Game, value: String): Word?
+    fun getSameWordOrNull(value: String): Word?
 }
 
 class WordsRepositoryImpl(
@@ -46,8 +46,8 @@ class WordsRepositoryImpl(
             )
         }.mapInResult()
 
-    override fun getSameWordOrNull(game: Game, value: String): Word? {
-        return localSource.getSameWordOrNull(value, game)
+    override fun getSameWordOrNull(value: String): Word? {
+        return localSource.getSameWordOrNull(value)
     }
 
     private suspend fun getUnusedWordFromLocalOrNull() =

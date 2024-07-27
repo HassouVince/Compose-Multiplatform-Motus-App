@@ -8,7 +8,7 @@ import fr.naddev.composemultiplatformmotus.Words
 interface WordsLocalDataSource {
     fun saveWords(words: List<Word>)
     fun getUnusedWord(): Word?
-    fun getSameWordOrNull(value: String, game: Game): Word?
+    fun getSameWordOrNull(value: String): Word?
     fun updateWord(value: String)
     fun getWordsCount(): Long
     fun removeAllWords()
@@ -25,7 +25,7 @@ class WordsLocalDataSourceImpl(
             .executeAsOneOrNull()
             ?.let(::mapToWordOrNull)
 
-    override fun getSameWordOrNull(value: String, game: Game): Word? =
+    override fun getSameWordOrNull(value: String): Word? =
         dbQuery.selectMatchingWord(value.uppercase())
             .executeAsOneOrNull()
             ?.let(::mapToWordOrNull)

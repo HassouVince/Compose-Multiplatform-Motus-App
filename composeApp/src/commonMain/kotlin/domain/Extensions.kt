@@ -13,8 +13,6 @@ fun <T> Flow<AppResult<T>>.transformResult(
     onSuccess: suspend (value: T) -> Flow<GameState>,
 ) : Flow<GameState> {
     return this.flatMapLatest {
-        if(it is AppResult.Error)
-            flowOf(GameState.Error(it.throwable))
         if(it is AppResult.Success)
             onSuccess(it.data)
         else
